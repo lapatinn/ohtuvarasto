@@ -9,6 +9,9 @@
     {% for id, warehouse in warehouses.items() %}
     <div class="warehouse-card">
         <h3>{{ warehouse.name }}</h3>
+        {% if warehouse.description %}
+        <div class="warehouse-description">{{ warehouse.description }}</div>
+        {% endif %}
         <div class="warehouse-info">
             <strong>Capacity:</strong> {{ warehouse.varasto.tilavuus }} |
             <strong>Current:</strong> {{ warehouse.varasto.saldo }} |

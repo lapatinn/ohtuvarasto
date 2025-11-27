@@ -21,6 +21,7 @@ def index():
 def create_warehouse():
     if request.method == 'POST':
         name = request.form.get('name', 'Unnamed Warehouse')
+        description = request.form.get('description', '')
         capacity = float(request.form.get('capacity', 100))
         initial = float(request.form.get('initial', 0))
 
@@ -28,6 +29,7 @@ def create_warehouse():
         warehouses[warehouse_id] = {
             'id': warehouse_id,
             'name': name,
+            'description': description,
             'varasto': Varasto(capacity, initial)
         }
         return redirect(url_for('index'))
@@ -51,6 +53,10 @@ def edit_warehouse(warehouse_id):
 
     if request.method == 'POST':
         warehouse['name'] = request.form.get('name', warehouse['name'])
+        warehouse['description'] = request.form.get(
+            'description',
+            warehouse.get('description', '')
+        )
         return redirect(url_for('view_warehouse', warehouse_id=warehouse_id))
 
     return render_template('edit_warehouse.html', warehouse=warehouse)

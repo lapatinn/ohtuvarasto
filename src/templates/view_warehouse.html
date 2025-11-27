@@ -6,6 +6,9 @@
 <h2>{{ warehouse.name }}</h2>
 
 <div class="warehouse-card">
+    {% if warehouse.description %}
+    <div class="warehouse-description">{{ warehouse.description }}</div>
+    {% endif %}
     <div class="warehouse-info">
         <p><strong>Capacity:</strong> {{ warehouse.varasto.tilavuus }}</p>
         <p><strong>Current Amount:</strong> {{ warehouse.varasto.saldo }}</p>
