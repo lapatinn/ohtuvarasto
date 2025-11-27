@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Edit {{ warehouse.name }} - Warehouse App{% endblock %}
+
+{% block content %}
+<h2>Edit Warehouse</h2>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="name">Warehouse Name:</label>
+        <input type="text" id="name" name="name" value="{{ warehouse.name }}" required>
+    </div>
+    
+    <div class="form-group">
+        <p><strong>Capacity:</strong> {{ warehouse.varasto.tilavuus }} (cannot be changed)</p>
+        <p><strong>Current Amount:</strong> {{ warehouse.varasto.saldo }}</p>
+    </div>
+    
+    <button type="submit" class="btn btn-success">Save Changes</button>
+    <a href="{{ url_for('view_warehouse', warehouse_id=warehouse.id) }}" class="btn">Cancel</a>
+</form>
+{% endblock %}
